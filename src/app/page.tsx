@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Menu, Plus } from "lucide-react"
+import { Menu, Plus, Pencil, Check } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -56,39 +56,7 @@ export default function Home() {
                 </div>
               </CardContent>
               <CardFooter className="gap-2">
-                {/* <Button>Save changes</Button> */}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">
-                      Ver detalhes
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                      <DialogTitle>Adicionar</DialogTitle>
-                      <DialogDescription>
-                        ss
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="grid gap-4 py-4">
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                          Name
-                        </Label>
-                        {/* <Input id="name" value="Pedro Duarte" className="col-span-3" /> */}
-                      </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                          Username
-                        </Label>
-                        {/* <Input id="username" value="@peduarte" className="col-span-3" /> */}
-                      </div>
-                    </div>
-                    <DialogFooter>
-                      <Button type="submit">Save changes</Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
+                <AddAndUpdateService stage="not-started" />
               </CardFooter>
             </Card>
           </TabsContent>
@@ -106,75 +74,7 @@ export default function Home() {
                 </div>
               </CardContent>
               <CardFooter className="gap-2">
-                {/* <Button>Save changes</Button> */}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">
-                      Ver detalhes
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                      <DialogTitle>Adicionar serviço</DialogTitle>
-                      <DialogDescription>
-                        Adicione o serviço a ser realizado
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="grid gap-4 py-4">
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                          Escola
-                        </Label>
-                        <Input disabled id="name" value="Pedro Duarte" className="col-span-3" />
-                      </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                          Descrição do serviço
-                        </Label>
-                        <Input disabled id="name" value="Pedro Duarte" className="col-span-3" />
-                      </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                          Anexar imagem
-                        </Label>
-                        <Input disabled id="username" value="@peduarte" className="col-span-3" />
-                      </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                          Prioridade
-                        </Label>
-                        <Select>
-                          <SelectTrigger disabled className="w-full col-span-3">
-                            <SelectValue placeholder="Selecione a prioridade" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectLabel>Prioridade</SelectLabel>
-                              <SelectItem value="low">Baixa</SelectItem>
-                              <SelectItem value="medium">Media</SelectItem>
-                              <SelectItem value="high">Alta</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                          Materiais necessários
-                        </Label>
-                        <Textarea id="username" value="@peduarte" className="col-span-3" />
-                      </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                          Serviços necessários
-                        </Label>
-                        <Textarea id="servicos-necessarios" className="col-span-3" />
-                      </div>
-                    </div>
-                    <DialogFooter>
-                      <Button type="submit">Atualizar</Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
+                <AddAndUpdateService stage="in-progress" />
               </CardFooter>
             </Card>
           </TabsContent>
@@ -191,62 +91,95 @@ function Header() {
         <Menu className="w-6 h-6" />
       </Button>
       <h1 className="text-xl text-center">Gerenciador de serviços</h1>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">
-            <Plus />
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Adicionar serviço</DialogTitle>
-            <DialogDescription>
-              Adicione o serviço a ser realizado
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Escola
-              </Label>
-              <Input id="name" value="Pedro Duarte" className="col-span-3" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Descrição do serviço
-              </Label>
-              <Input id="name" value="Pedro Duarte" className="col-span-3" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Anexar imagem
-              </Label>
-              <Input id="username" value="@peduarte" className="col-span-3" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Prioridade
-              </Label>
-              <Select>
-                <SelectTrigger className="w-full col-span-3">
-                  <SelectValue placeholder="Selecione a prioridade" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Prioridade</SelectLabel>
-                    <SelectItem value="low">Baixa</SelectItem>
-                    <SelectItem value="medium">Media</SelectItem>
-                    <SelectItem value="high">Alta</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button type="submit">Adicionar</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <AddAndUpdateService stage="adding" />
     </div>
+  )
+}
+
+function AddAndUpdateService({ stage }: { stage: string }) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        {stage === "adding" ? (
+          <Button variant={"outline"}>
+            <Plus className="w-4 h-4" />
+          </Button>
+        ) : stage === "not-started" ? (
+          <Button variant={"outline"}>
+            <Plus className="w-4 h-4" /> Editar Serviço
+          </Button>
+        ) : stage === "in-progress" ? (
+          <Button variant={"outline"}>
+            <Pencil className="w-4 h-4" /> Atualizar Serviço
+          </Button>
+        ) : stage === "completed" ? (
+          <Button variant={"outline"} disabled>
+            <Check className="w-4 h-4" /> Completo
+          </Button>
+        ) : null}
+        {/* {stage === "in-progress" && <Button variant={"ghost"}>Editar</Button>} */}
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Adicionar serviço</DialogTitle>
+          <DialogDescription>
+            Adicione o serviço a ser realizado
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Escola
+            </Label>
+            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Descrição do serviço
+            </Label>
+            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">
+              Anexar imagem
+            </Label>
+            <Input id="photo" value="COLOCAR INPUT DE FOTO" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">
+              Prioridade
+            </Label>
+            <Select>
+              <SelectTrigger className="w-full col-span-3">
+                <SelectValue placeholder="Selecione a prioridade" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Prioridade</SelectLabel>
+                  <SelectItem value="low">Baixa</SelectItem>
+                  <SelectItem value="medium">Media</SelectItem>
+                  <SelectItem value="high">Alta</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className={`grid grid-cols-4 items-center gap-4 ${stage === "adding" || "not-started" ? "hidden" : ""}`}>
+            <Label htmlFor="username" className="text-right">
+              Materiais necessários
+            </Label>
+            <Textarea id="username" value="@peduarte" className="col-span-3" />
+          </div>
+          <div className={`grid grid-cols-4 items-center gap-4 ${stage === "adding" || "not-started" ? "hidden" : ""}`}>
+            <Label htmlFor="username" className="text-right">
+              Serviços necessários
+            </Label>
+            <Textarea id="servicos-necessarios" className="col-span-3" />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button type="submit">Adicionar</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
